@@ -251,7 +251,7 @@ save(prices_sp500_d, prices_sp500_m, rets_sp500_d, rets_sp500_m, prices_spx_d, p
     rownames(prices_sp500_d)[1], "_", rownames(prices_sp500_d)[nrow(prices_sp500_d)], ".RData"
   )
 )
-save(prices_sp500_d, prices_sp500_m, rets_sp500_d, rets_sp500_m, prices_spx_d, prices_spx_m, rets_spx_d, rets_spx_m,
+save(rets_sp500_d, rets_sp500_m, rets_spx_d, rets_spx_m,
   file = "data/sp500_data.rda"
 )
 ```
