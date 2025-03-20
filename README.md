@@ -243,23 +243,29 @@ rets_spx_m <- calc_rets(prices_spx_m)
 ## Save Data
 
 Finally, we save all the data to an `.RData` file for future use and as `.rda` files for including in packages.
-The latter represents only a subset of the dataset for more efficient storage and loading.
+The latter represent only a subset of the dataset for more efficient storage and loading.
 
-``` r
+```{r save-data}
 save(prices_sp500_d, prices_sp500_m, rets_sp500_d, rets_sp500_m, prices_spx_d, prices_spx_m, rets_spx_d, rets_spx_m,
   file = paste0(
-    "data/sp500_prices_d_m_",
+    "data/sp500_data_",
     rownames(prices_sp500_d)[1], "_", rownames(prices_sp500_d)[nrow(prices_sp500_d)], ".RData"
   )
 )
-# Save a subset of 200 stocks from the rets_sp500 datasets
+
 set.seed(123) # for reproducibility
 subset_stocks <- sample(colnames(rets_sp500_d), 200)
+prices_d <- prices_sp500_d[, subset_stocks]
+prices_m <- prices_sp500_m[, subset_stocks]
 rets_d <- rets_sp500_d[, subset_stocks]
 rets_m <- rets_sp500_m[, subset_stocks]
 
+save(prices_d, file = "data/prices_d.rda")
+save(prices_m, file = "data/prices_m.rda")
 save(rets_m, file = "data/rets_m.rda")
 save(rets_d, file = "data/rets_d.rda")
+save(prices_spx_d, file = "data/prices_spx_d.rda")
+save(prices_spx_m, file = "data/prices_spx_m.rda")
 save(rets_spx_m, file = "data/rets_spx_m.rda")
 save(rets_spx_d, file = "data/rets_spx_d.rda")
 ```
