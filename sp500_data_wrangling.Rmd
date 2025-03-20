@@ -261,7 +261,7 @@ save(prices_sp500_d, prices_sp500_m, rets_sp500_d, rets_sp500_m, prices_spx_d, p
 )
 
 set.seed(123) # for reproducibility
-subset_stocks <- sample(colnames(rets_sp500_d), 200)
+subset_stocks <- sort(sample(colnames(rets_sp500_d), 200))
 prices_d <- prices_sp500_d[, subset_stocks]
 prices_m <- prices_sp500_m[, subset_stocks]
 rets_d <- rets_sp500_d[, subset_stocks]
